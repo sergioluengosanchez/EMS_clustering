@@ -1,0 +1,96 @@
+#' Get insertion point of somas
+#'
+#' Apply Gaussian mixture models to segment soma from dendrites
+#'
+#' @param directory path to the folder where PLY files of the somas are saved
+#' @param output_shape_diameter path to the folder where somas with shape diameter will be saved
+#' @param broken_mesh path to the folder where somas will be saved after that the GMM threshold removes the dendrites
+#' @param output_poisson_reconstruction path to the folder where somas will be saved after the mesh closing process
+#' @param final_result path to the folder where final segmented somas will be saved after the isolated pieces are removed
+#' @return None
+#'
+#' @useDynLib SomaSimulation
+#'
+#' @examples
+#' path <- "/home/universidad/RStudio Projects/SomaSimulation/data"
+#' soma_parameters <- get_insertion_point(path_complete_neuron = file.path(path,"ao_results"), path_soma = file.path(path, "sdf_results"), path_off_export = file.path(tempdir(),"soma_off_files"), num_curves = 6)
+#'
+#' @export
+get_insertion_point <- function(path_complete_neuron, path_soma, path_off_export, num_curves) {
+  PLY_ao_files <- list.files(path_complete_neuron)[which(file_ext(list.files(path_complete_neuron)) == "ply")]
+  PLY_sdf_files <- list.files(path_soma)[which(file_ext(list.files(path_soma)) == "ply")]
+
+  PLY_files <- PLY_ao_files[PLY_ao_files %in% PLY_sdf_files]
+
+  soma_parameters <- list()
+  list_soma_names <- list()
+  count <- 1
+  for (file in PLY_files)
+  {
+    soma_name <- file_path_sans_ext(file)
+    list_soma_names[[count]] <-soma_name
+
+    print(file)
+    print(count)
+    ply_ao <- vcgPlyRead(file.path(path_complete_neuron,file))
+    ply_sdf <- vcgPlyRead(file.path(path_soma,file))
+
+    soma <- vcgIsolated(ply_sdf)
+    soma<-vcgClean(soma,sel=0:7)
+
+    ply_ao$vertices <- data.table(t(ply_ao$vb[-4,]))
+    soma$vertices <- t(soma$vb[-4,])
+    bounding_box_sdf <- apply(soma$vertices,2,function(x){return(c(min(x),max(x)))})
+
+    apical_dendrite <- ply_ao$vertices[bounding_box_sdf[1,1]<V1 & bounding_box_sdf[2,1]>V1 & bounding_box_sdf[1,3]<V3 & bounding_box_sdf[2,3]>V3 & bounding_box_sdf[1,2]>V2]
+    closest_points <- vcgClostKD(as.matrix(apical_dendrite), soma)
+    closest_points$vertices <- t(closest_points$vb[-4,])
+    mean_closest_point <- colMeans(closest_points$vertices)
+
+    insertion_point <- which.min(rowSums((sweep(soma$vertices,2,mean_closest_point))^2))
+    vcgOffWrite(soma, file.path("/home/universidad/prueba.off"))
+    soma$distances <- geodesic_distance("/home/universidad/prueba.off", insertion_point-1)
+
+    factorized_model <- factorize_model(soma, num_curves)
+    #Corregir direccion de las normales
+    soma<-vcgClean(factorized_model$soma, sel=num_curves)
+    soma$vertices <- factorized_model$soma$vertices
+    soma$distances <- factorized_model$soma$distances
+
+    curve <- list()
+    for(i in 1:length(factorized_model$limits))
+    {
+      if(i==length(factorized_model$limits))
+      {
+        curve[[i]] = soma$vertices[which(soma$distances == max(soma$distances)), ]
+      }else{
+        curve[[i]] = soma$vertices[which(soma$distances == factorized_model$limits[i]), ]
+      }
+    }
+
+    soma_parameters[[count]] <- compute_curve_parameters(soma, insertion_point, curve)
+    count <- count +1
+  }
+
+  soma_parameters <- matrix(unlist(soma_parameters), ncol = length(soma_parameters[[1]]), nrow = length(soma_parameters), byrow = T)
+  # header <- c('h_1','h_2','h_3','h_4','h_5','h_6','h_7',"theta_2","theta_3","theta_4","theta_5","theta_6","theta_7",
+  #             "cos_phi_2","cos_phi_3","cos_phi_4","cos_phi_5","cos_phi_6","cos_phi_7","B_r_1","B_r_2","B_r_3","B_r_4","B_r_5","B_r_6",
+  #             "B_R_1","B_R_2","B_R_3","B_R_4","B_R_5","B_R_6",'ratio_1_2','ratio_1_3','ratio_1_4','ratio_1_5','ratio_1_6',
+  #   'ratio_2_3','ratio_2_4','ratio_2_5','ratio_2_6','ratio_3_4','ratio_3_5','ratio_3_6','ratio_4_5','ratio_4_6','ratio_5_6',
+  #   "inst_Phi_1","inst_Phi_2","inst_Phi_3","inst_Phi_4","inst_Phi_5","inst_Phi_6",
+  #   "inst_Theta_1","inst_Theta_2","inst_Theta_3","inst_Theta_4","inst_Theta_5","inst_Theta_6",
+  #   "V","V_1","V_2","V_3","V_4","V_5","V_6","V_7",
+  #   'surface','surf_1','surf_2','surf_3','surf_4','surf_5','surf_6','surf_7')
+  # header <- c('h_1','h_2','h_3','h_4','h_5','h_6','h_7',"theta_2","theta_3","theta_4","theta_5","theta_6","theta_7",
+  #             "cos_phi_2","cos_phi_3","cos_phi_4","cos_phi_5","cos_phi_6","cos_phi_7","B_r_1","B_r_2","B_r_3","B_r_4","B_r_5","B_r_6",
+  #             "B_R_1","B_R_2","B_R_3","B_R_4","B_R_5","B_R_6",
+  #             "inst_Phi_1","inst_Phi_2","inst_Phi_3","inst_Phi_4","inst_Phi_5","inst_Phi_6",
+  #             "inst_Theta_1","inst_Theta_2","inst_Theta_3","inst_Theta_4","inst_Theta_5","inst_Theta_6")
+  header <- c(paste0("h_",1:num_curves), paste0("theta_",2:num_curves), paste0("cos_phi_",2:num_curves), paste0("B_r_",1:(num_curves-1)),paste0("B_R_",1:(num_curves-1)),
+    paste0("inst_Phi_",1:(num_curves-1)),paste0("inst_Theta_",1:(num_curves-1)))
+
+  soma_parameters<-as.data.frame(soma_parameters)
+  colnames(soma_parameters) <- header
+  row.names(soma_parameters) <- unlist(list_soma_names)
+  return(soma_parameters)
+}

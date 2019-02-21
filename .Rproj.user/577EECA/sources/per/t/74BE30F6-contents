@@ -1,0 +1,318 @@
+#' @example
+#' is_dir <- c(rep(1,5),rep(0,10))
+#' num_inst <- 1000
+#' num_clusters <- 3
+#' prob <- 0.4
+#' seed <- 1
+#' experimento1(is_dir, num_clusters, num_inst, prob,seed)
+experimento1 <- function(is_dir, num_clusters, num_inst, prob, seed = 1)
+{
+  set.seed(seed)
+  # results <- data.frame(entropy = -1, entropy1 = -1, KL1 = -1, hit_rate1 = -1, entropy2 = -1, KL2 = -1, hit_rate2 = -1, bestBIC = -1, bestBIC_simple = -1)
+  cl<- makeCluster(10, outfile="")
+  registerDoParallel(cl)
+  results <-foreach(it=1:10, .packages=c("SomaSimulation"))%dopar%{
+  # for(it in 1:10)
+  # {
+    model  <- generate_artificial_BN(is_dir, prob = prob, num_clusters = num_clusters)
+    data <- matrix(0, nrow = num_inst * num_clusters, ncol = length(is_dir))
+    for(i in 1:num_clusters)
+    {
+      data[(((i-1)*num_inst)+1):(num_inst*i),] <- sampleBN(model, is_dir, i, num_inst)
+    }
+
+    is_dir_class <- c(is_dir,0)
+    is_dir_class_linear <- rep(0, length(is_dir_class))
+    colnames(data) <- names(model$structure$nodes)
+
+    bestModel <- c()
+    bestBIC <- -Inf
+
+    bestBIC_simple <- -Inf
+    bestModel_simple <- c()
+
+
+    for(i in 1:30)
+    {
+      data_class <- cbind(data, sample.int(num_clusters,size=nrow(data),replace=T)-1)
+      #We set num_clusters to 0 to use the initialization of data_class for the clustering instead of initialize inside the algorithm
+      clustering_model <- clusteringSomas(data_class, is_dir_class, num_clusters = 0, num_parents = 7, cores = 1, directional_parents=T)
+      clustering_model_simple <- clusteringSomas(data_class, is_dir_class, num_clusters = 0, num_parents = 7, cores = 1, directional_parents=F)
+      model_info <- list(original_model = model, SEM_model = clustering_model, simple_SEM_model = clustering_model_simple, data_class = data_class)
+
+      if(clustering_model$weights != -1 & clustering_model_simple$weights!=-1)
+      {
+       if(bestBIC<clustering_model$BIC)
+        {
+          bestModel<-clustering_model
+          bestBIC <- clustering_model$BIC
+        }
+
+        if(bestBIC_simple < clustering_model_simple$BIC)
+        {
+          bestModel_simple <- clustering_model_simple
+          bestBIC_simple <- clustering_model_simple$BIC
+        }
+      }
+      dir.create(paste0("/home/universidad/models/parents 3/model_info_cl",num_clusters,"_dir",sum(is_dir),"_lin",sum(!is_dir)))
+      saveRDS(model_info,paste0("/home/universidad/models/parents 3/model_info_cl",num_clusters,"_dir",sum(is_dir),"_lin",sum(!is_dir),"/model_info_cl",num_clusters,"_",it,"_",i,"_dir",sum(is_dir),"_lin",sum(!is_dir)))
+    }
+
+    class <- rep(1:num_clusters,each=num_inst)
+    s<-clustering_correspondence(model,bestModel)
+    hit_rate1 <- sum(table(class,apply(bestModel$weights,1,which.max))[1:num_clusters, c(s$correspondence)])/length(class)
+    KL1 <- model_KL_divergence(model,bestModel, s$correspondence)
+    entropy1 <- entropy_model(bestModel)
+    s<-clustering_correspondence(model,bestModel_simple)
+    hit_rate2 <- sum(table(class,apply(bestModel_simple$weights,1,which.max))[1:num_clusters, c(s$correspondence)])/length(class)
+    KL2 <- model_KL_divergence(model,bestModel_simple, s$correspondence)
+    entropy2 <- entropy_model(bestModel_simple)
+    entropy <- entropy_model(model)
+    data.frame(entropy = entropy, entropy1 = entropy1, KL1 = KL1, MDL1 = entropy1+KL1,hit_rate1 = hit_rate1, entropy2 = entropy2, KL2 = KL2, MDL2 = entropy2+KL2,hit_rate2 = hit_rate2, bestBIC = bestBIC, bestBIC_simple = bestBIC_simple)
+    # results <- rbind(results,data.frame(entropy = entropy, entropy1 = entropy1, KL1 = KL1, hit_rate1 = hit_rate1, entropy2 = entropy2, KL2 = KL2, hit_rate2 = hit_rate2, bestBIC = bestBIC, bestBIC_simple = bestBIC_simple))
+  }
+  stopCluster(cl)
+  write.csv(rbindlist(results),paste0("/home/universidad/models/parents 3/csv/model_info_",num_clusters,"_",sum(is_dir),"_",sum(!is_dir),".csv"))
+  # model_info <- list(original_model = model, SEM_model = bestModel, simple_SEM_model = bestModel_simple, data_class = data_class)
+
+  # return()
+}
+
+compute_wilcoxon_test <- function(num_clusters,num_dir,num_no_dir)
+{
+  dataset<-read.csv(paste0("/home/universidad/models/parents 3/csv/model_info_",num_clusters,"_",num_dir,"_",num_no_dir,".csv"))
+  # dataset <- dataset[1:10,-c(1,2,3,6,7,10)]
+  p_KL<-wilcox.test(dataset$KL1, dataset$KL2, paired=TRUE)$p.value
+  p_MDL<-wilcox.test(dataset$MDL1, dataset$MDL2, paired=TRUE)$p.value
+  p_BIC<-wilcox.test(dataset$bestBIC, dataset$bestBIC_simple, paired=TRUE)$p.value
+  return(c(p_KL,p_MDL,p_BIC))
+}
+
+compute_wilcoxon_test_parents <- function(num_clusters,num_dir,num_no_dir)
+{
+  dataset<-read.csv(paste0("/home/universidad/models/parents 5/csv/model_info_",num_clusters,"_",num_dir,"_",num_no_dir,".csv"))
+  dataset2<-read.csv(paste0("/home/universidad/models/parents 7/csv/model_info_",num_clusters,"_",num_dir,"_",num_no_dir,".csv"))
+
+  # dataset <- dataset[1:10,-c(1,2,3,6,7,10)]
+  p_KL<-wilcox.test(dataset$KL1, dataset2$KL1, paired=TRUE)$p.value
+  p_MDL<-wilcox.test(dataset$MDL1, dataset2$MDL1, paired=TRUE)$p.value
+  p_BIC<-wilcox.test(dataset$bestBIC, dataset2$bestBIC, paired=TRUE)$p.value
+
+  p_KL_GHM<-wilcox.test(dataset$KL2, dataset2$KL2, paired=TRUE)$p.value
+  p_MDL_GHM<-wilcox.test(dataset$MDL2, dataset2$MDL2, paired=TRUE)$p.value
+  p_BIC_GHM<-wilcox.test(dataset$bestBIC_simple, dataset2$bestBIC_simple, paired=TRUE)$p.value
+
+  return(c(p_KL,p_MDL,p_BIC,p_KL_GHM,p_MDL_GHM,p_BIC_GHM))
+}
+
+experimento2 <- function(is_dir, num_clusters, num_inst, prob, seed = 1)
+{
+  set.seed(seed)
+  # results <- data.frame(entropy = -1, entropy1 = -1, KL1 = -1, hit_rate1 = -1, entropy2 = -1, KL2 = -1, hit_rate2 = -1, bestBIC = -1, bestBIC_simple = -1)
+  cl<- makeCluster(10, outfile="")
+  registerDoParallel(cl)
+  results <-foreach(it=1:10, .packages=c("SomaSimulation"))%dopar%{
+    # for(it in 1:10)
+    # {
+    # model  <- generate_artificial_BN(is_dir, prob = prob, num_clusters = num_clusters)
+    models <- readRDS(paste0("/home/universidad/models/parents 5/model_info_cl",num_clusters,"_dir",sum(is_dir),"_lin",sum(!is_dir),"/model_info_cl",num_clusters,"_",it,"_",1,"_dir",sum(is_dir),"_lin",sum(!is_dir)))
+    model <- models$original_model
+    data <- models$data_class[,-ncol(models$data_class)]
+
+    is_dir_class <- c(is_dir,0)
+    is_dir_class_linear <- rep(0, length(is_dir_class))
+
+    bestModel <- c()
+    bestBIC <- -Inf
+
+    bestBIC_simple <- -Inf
+    bestModel_simple <- c()
+
+
+    for(i in 1:30)
+    {
+      data_class <- cbind(data, sample.int(num_clusters,size=nrow(data),replace=T)-1)
+      #We set num_clusters to 0 to use the initialization of data_class for the clustering instead of initialize inside the algorithm
+      clustering_model <- clusteringSomas(data_class, is_dir_class, num_clusters = 0, num_parents = 3, cores = 1, directional_parents=T)
+      clustering_model_simple <- clusteringSomas(data_class, is_dir_class, num_clusters = 0, num_parents = 3, cores = 1, directional_parents=F)
+      model_info <- list(original_model = model, SEM_model = clustering_model, simple_SEM_model = clustering_model_simple, data_class = data_class)
+
+      if(clustering_model$weights != -1 & clustering_model_simple$weights!=-1)
+      {
+        if(bestBIC<clustering_model$BIC)
+        {
+          bestModel<-clustering_model
+          bestBIC <- clustering_model$BIC
+        }
+
+        if(bestBIC_simple < clustering_model_simple$BIC)
+        {
+          bestModel_simple <- clustering_model_simple
+          bestBIC_simple <- clustering_model_simple$BIC
+        }
+      }
+      dir.create(paste0("/home/universidad/models/parents 3/model_info_cl",num_clusters,"_dir",sum(is_dir),"_lin",sum(!is_dir)))
+      saveRDS(model_info,paste0("/home/universidad/models/parents 3/model_info_cl",num_clusters,"_dir",sum(is_dir),"_lin",sum(!is_dir),"/model_info_cl",num_clusters,"_",it,"_",i,"_dir",sum(is_dir),"_lin",sum(!is_dir)))
+    }
+
+    class <- rep(1:num_clusters,each=num_inst)
+    s<-clustering_correspondence(model,bestModel)
+    hit_rate1 <- sum(table(class,apply(bestModel$weights,1,which.max))[1:num_clusters, c(s$correspondence)])/length(class)
+    KL1 <- model_KL_divergence(model,bestModel, s$correspondence)
+    entropy1 <- entropy_model(bestModel)
+    s<-clustering_correspondence(model,bestModel_simple)
+    hit_rate2 <- sum(table(class,apply(bestModel_simple$weights,1,which.max))[1:num_clusters, c(s$correspondence)])/length(class)
+    KL2 <- model_KL_divergence(model,bestModel_simple, s$correspondence)
+    entropy2 <- entropy_model(bestModel_simple)
+    entropy <- entropy_model(model)
+    data.frame(entropy = entropy, entropy1 = entropy1, KL1 = KL1, MDL1 = entropy1+KL1,hit_rate1 = hit_rate1, entropy2 = entropy2, KL2 = KL2, MDL2 = entropy2+KL2,hit_rate2 = hit_rate2, bestBIC = bestBIC, bestBIC_simple = bestBIC_simple)
+    # results <- rbind(results,data.frame(entropy = entropy, entropy1 = entropy1, KL1 = KL1, hit_rate1 = hit_rate1, entropy2 = entropy2, KL2 = KL2, hit_rate2 = hit_rate2, bestBIC = bestBIC, bestBIC_simple = bestBIC_simple))
+  }
+  stopCluster(cl)
+  write.csv(rbindlist(results),paste0("/home/universidad/models/parents 3/csv/model_info_",num_clusters,"_",sum(is_dir),"_",sum(!is_dir),".csv"))
+  # model_info <- list(original_model = model, SEM_model = bestModel, simple_SEM_model = bestModel_simple, data_class = data_class)
+
+  # return()
+}
+
+# is_dir_list <- list()
+# is_dir_list[[1]] <- c(rep(1,5),rep(0,10))
+# is_dir_list[[2]] <- c(rep(1,10),rep(0,5))
+# is_dir_list[[3]] <- c(rep(1,10),rep(0,10))
+# for(idx_isdir in 1:length(is_dir_list))
+# {
+#   for(num_of_cluster in c(3,5,10))
+#   {
+#     experimento2(is_dir_list[[3]], 10, num_inst, prob, 1)
+#   }
+# }
+
+
+
+# for(it in 1:10)
+# {
+#   bestModel <- c()
+#   bestBIC <- -Inf
+#
+#   bestBIC_simple <- -Inf
+#   bestModel_simple <- c()
+#   for(i in 1:30)
+#   {
+#     model<-readRDS(paste0("/home/universidad/models/model_info_cl10_",it,"_",i,"_dir20_lin20"))
+#     clustering_model <- model$SEM_model
+#     clustering_model_simple <- model$simple_SEM_model
+#     if(bestBIC<clustering_model$BIC)
+#     {
+#       bestModel<-clustering_model
+#       bestBIC <- clustering_model$BIC
+#     }
+#
+#     if(bestBIC_simple < clustering_model_simple$BIC)
+#     {
+#       bestModel_simple <- clustering_model_simple
+#       bestBIC_simple <- clustering_model_simple$BIC
+#     }
+#   }
+#   class <- rep(1:num_clusters,each=num_inst)
+#   s<-clustering_correspondence(model,bestModel)
+#   hit_rate1 <- sum(table(class,apply(bestModel$weights,1,which.max))[1:num_clusters, c(s$correspondence)])/length(class)
+#   KL1 <- model_KL_divergence(model,bestModel, s$correspondence)
+#   entropy1 <- entropy_model(bestModel)
+#   s<-clustering_correspondence(model,bestModel_simple)
+#   hit_rate2 <- sum(table(class,apply(bestModel_simple$weights,1,which.max))[1:num_clusters, c(s$correspondence)])/length(class)
+#   KL2 <- model_KL_divergence(model,bestModel_simple, s$correspondence)
+#   entropy2 <- entropy_model(bestModel_simple)
+#   entropy <- entropy_model(model)
+# }
+
+cluster_somas<-function(){
+  data<-read.csv("data/soma_dataset_short.csv")[,-1]
+  dataset <- set_directional_variables(data)
+
+
+  bestModel<-c()
+  bestBIC<--Inf
+  for(i in 1:50)
+  {
+    model <- clusteringSomas(dataset$data, dataset$is_dir, num_clusters = 2, num_parents = 2, cores = 1)
+    if(bestBIC<model$BIC)
+    {
+      bestModel<-model
+      bestBIC<-model$BIC
+    }
+  }
+}
+
+watson_williams_test<-function(data,bestModel,cluster1,cluster2)
+{
+  id_dir<-which(grepl("theta_*",colnames(data)) | grepl("inst_Phi_*",colnames(data)))
+  cluster_id <- apply(bestModel$weights,1,which.max)
+  id_inst<-which(cluster_id==cluster1 | cluster_id==cluster2)
+  group <- cluster_id[id_inst]
+  temp_dat <- data[id_inst,]
+
+  pvalues <- c()
+  for(i in id_dir)
+  {
+    pvalues <- c(pvalues,watson.williams.test(temp_dat[,i],group)$p.value)
+  }
+  names(pvalues)<-colnames(data[,id_dir])
+  return(pvalues)
+}
+
+t_test<-function(data,bestModel,cluster1,cluster2)
+{
+  id_not_dir<-which(!(grepl("theta_*",colnames(data)) | grepl("inst_Phi_*",colnames(data))))
+  cluster_id <- apply(bestModel$weights,1,which.max)
+  id_inst<-which(cluster_id==cluster1 | cluster_id==cluster2)
+  group <- cluster_id[id_inst]
+  temp_dat <- data[id_inst,]
+
+  pvalues <- c()
+  for(i in id_not_dir)
+  {
+    pvalues <- c(pvalues,t.test(temp_dat[group==cluster1,i],temp_dat[group==cluster2,i])$p.value)
+  }
+  names(pvalues)<-colnames(data[,id_not_dir])
+  return(pvalues)
+}
+
+generate_rules <- function()
+{
+  library(foreign)
+  model <- readRDS("inst/model_spines.rds")
+  data<-read.csv("data/soma_dataset_short.csv")[,-1]
+  data_class <- cbind(data,class=as.factor(apply(model$weights,1,which.max)))
+
+  data_class1 <- data_class
+  data_class1$class[which(data_class1$class==3)] <- 2
+  setattr(data_class1$class,"levels",c("1","2"))
+
+  data_class2 <- data_class
+  data_class2$class[which(data_class2$class==1)] <- 3
+  data_class2$class[which(data_class2$class==2)] <- 1
+  data_class2$class[which(data_class2$class==3)] <- 2
+  setattr(data_class2$class,"levels",c("1","2"))
+
+  data_class3 <- data_class
+  data_class3$class[which(data_class3$class==1)] <- 2
+  data_class3$class[which(data_class3$class==3)] <- 1
+  setattr(data_class3$class,"levels",c("1","2"))
+
+  data_class<-apply(data_class,2,as.factor)
+  write.arff(data_class1,"data/class1.arff")
+  write.arff(data_class2,"data/class2.arff")
+  write.arff(data_class3,"data/class3.arff")
+}
+
+KL_divergence_cluster <-function(model_p,model_q,cluster_p,cluster_q)
+{
+  model_p<-model
+  model_q<-model
+  cluster_p<-1
+  cluster_q<-2
+  is_dir <- c(rep(1,length(model$vMParams[[1]])),rep(0,length(model$gaussParams[[1]])))
+    total_KL <- compute_directional_KL(model_p, model_q, cluster_p, cluster_q)
+    total_KL <- total_KL + compute_linear_KL(model_p, model_q, cluster_p, cluster_q, is_dir)
+  return (total_KL)
+}

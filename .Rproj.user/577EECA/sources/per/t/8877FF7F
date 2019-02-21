@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538579739892.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3206536762",
+    "id" : "8877FF7F",
+    "lastKnownWriteTime" : 1541425570,
+    "last_content_update" : 1541425570358,
+    "path" : "~/RStudio Projects/SomaSimulation/R/simulateSoma.R",
+    "project_path" : "R/simulateSoma.R",
+    "properties" : {
+        "cursorPosition" : "73,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

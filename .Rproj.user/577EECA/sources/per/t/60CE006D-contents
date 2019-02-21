@@ -1,0 +1,89 @@
+#data<-read.csv("data/soma_dataset_short.csv")[,-1]
+#dataset <- set_directional_variables(data)
+set_directional_variables<-function(data)
+{
+  # idx_dir <- c(8:13,47:52)
+  idx_dir <- c(grep("theta\\_*",colnames(data)),grep("inst\\_Phi\\_*",colnames(data)))
+  ordered_colnames <- c(colnames(data)[idx_dir],colnames(data)[setdiff(1:ncol(data),idx_dir)])
+  data <- data[,ordered_colnames]
+  is_dir <- matrix(0,ncol=ncol(data)+1,nrow=1)
+  is_dir[1:length(idx_dir)] <- 1
+  is_dir <- as.data.frame(is_dir)
+  colnames(is_dir) <- c(ordered_colnames, "class")
+
+  # sel_features <- c(1:37, 53:58)
+  # data <- data[,sel_features]
+  # is_dir <- is_dir[,c(sel_features,length(is_dir))]
+  row.names(data) <- NULL
+  return(list(data = data, is_dir = is_dir))
+}
+
+#' directional_parents is a boolean value denoting if the linear variables should have directional parents
+#' @examples
+#' model <- clusteringSomas(dataset$data, dataset$is_dir, num_clusters = 3, cores = 10)
+clusteringSomas <- function(data, is_dir, num_clusters = 10, num_parents = 5, directional_parents = T, cores = 1)
+{
+  #Search for the BN that maximizes BIC score. Structure as an adjacency matrix, weights and score are returned.
+  #If the number of clusters is 0 the last column is assumed to be the class
+  # data <- read.csv("/home/universidad/Dropbox/Hybrid_BN/Frogs_MFCCs-sinclases.csv")
+  # is_dir <- read.csv("/home/universidad/Dropbox/Hybrid_BN/Frogs_MFCCs-is_directional.csv")
+
+  SEM_cl_results<-list()
+  count <- 1
+  # cores <- 10
+  if(cores>1)
+  {
+    cores <- min(c(num_clusters-1,cores))
+    cl<- makeCluster(cores, outfile="")
+    registerDoParallel(cl)
+  }
+
+  if(num_clusters>0)
+  {
+    if(cores>1)
+    {
+      SEM_cl_results <-foreach(j=2:num_clusters, .packages=c("SomaSimulation"))%dopar%{
+        c_hybrid_SEM(data_r = data.matrix(data), is_directional_r = data.matrix(is_dir), num_clusters = j, max_parents = num_parents, directional_parents = directional_parents)
+      }
+    }else{
+      for(i in 2:num_clusters)
+      {
+        SEM_result <- c_hybrid_SEM(data_r = data.matrix(data), is_directional_r = data.matrix(is_dir), num_clusters = i, max_parents = num_parents, directional_parents = directional_parents)
+        SEM_cl_results[[count]] <- SEM_result
+        count <- count + 1
+      }
+    }
+  }else{
+    SEM_result <- c_hybrid_SEM(data_r = data.matrix(data), is_directional_r = data.matrix(is_dir), num_clusters = 0, max_parents = num_parents, directional_parents = directional_parents)
+    SEM_cl_results[[count]] <- SEM_result
+    count <- count + 1
+  }
+
+
+  if(cores>1)
+  {
+    stopCluster(cl)
+  }
+
+
+    #Get the BN from previous results.
+    model <- getBestBN(SEM_cl_results, data, is_dir)
+    return(model)
+}
+
+rerun<-function()
+{
+  bestBIC <- -Inf
+  bestModel <- c()
+  for(i in 1:10)
+  {
+    tryCatch({
+    model <- clusteringSomas(dataset$data, dataset$is_dir, num_clusters = 3, num_parents=5, cores =10)
+    if (model$BIC > bestBIC) {
+      bestModel <- model
+      bestBIC <- model$BIC
+      }
+    }, error = function(e){})
+  }
+  return(bestModel)
+}

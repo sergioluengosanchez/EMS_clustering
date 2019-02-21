@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1539679009147.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1484569924",
+    "id" : "21391D3B",
+    "lastKnownWriteTime" : 1535982166,
+    "last_content_update" : 1535982166,
+    "path" : "~/RStudio Projects/SomaSimulation/R/get_insertion_point.R",
+    "project_path" : "R/get_insertion_point.R",
+    "properties" : {
+        "cursorPosition" : "51,90",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

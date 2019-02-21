@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1541434784451.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3955401407",
+    "id" : "3A87B1E3",
+    "lastKnownWriteTime" : 1541445923,
+    "last_content_update" : 1541445923829,
+    "path" : "~/RStudio Projects/SomaSimulation/R/compute_KL.R",
+    "project_path" : "R/compute_KL.R",
+    "properties" : {
+        "cursorPosition" : "65,9",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

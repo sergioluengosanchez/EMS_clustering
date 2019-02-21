@@ -1,0 +1,944 @@
+[
+    {
+        "definitions" : [
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 26,
+                "name" : "density(int &, int &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@density#&I#S0_#"
+            },
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 52,
+                "name" : "log_density(int &, int &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@log_density#&I#S0_#"
+            },
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 78,
+                "name" : "log_likelihood(int &, int &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@log_likelihood#&I#S0_#"
+            },
+            {
+                "column" : 18,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 104,
+                "name" : "BIC(int &, int &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@BIC#&I#S0_#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 111,
+                "name" : "mle(int &, int &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@mle#&I#S0_#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 169,
+                "name" : "get_num_params",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@get_num_params#"
+            },
+            {
+                "column" : 40,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 174,
+                "name" : "get_params",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@get_params#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 184,
+                "name" : "set_params(int &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@set_params#&I#"
+            },
+            {
+                "column" : 40,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 193,
+                "name" : "get_mu",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@get_mu#"
+            },
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 197,
+                "name" : "get_sd",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@get_sd#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 201,
+                "name" : "get_id",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@get_id#"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 205,
+                "name" : "get_idx_parents",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@get_idx_parents#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+                "kind" : 7,
+                "line" : 209,
+                "name" : "set_idx_parents(std::vector<int> &)",
+                "parent_name" : "Gaussian",
+                "usr" : "c:@C@Gaussian@F@set_idx_parents#&$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/Gaussian.cpp",
+        "file_last_write" : 1528798990
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 29,
+                "name" : "density(int &, int &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@density#&I#S0_#"
+            },
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 43,
+                "name" : "log_density(int &, int &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@log_density#&I#S0_#"
+            },
+            {
+                "column" : 27,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 62,
+                "name" : "log_likelihood(int &, int &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@log_likelihood#&I#S0_#"
+            },
+            {
+                "column" : 18,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 77,
+                "name" : "BIC(int &, int &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@BIC#&I#S0_#"
+            },
+            {
+                "column" : 18,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 84,
+                "name" : "A1inv(double)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@A1inv#d#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 95,
+                "name" : "mle(int &, int &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@mle#&I#S0_#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 107,
+                "name" : "get_num_params",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@get_num_params#"
+            },
+            {
+                "column" : 40,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 113,
+                "name" : "get_params",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@get_params#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 124,
+                "name" : "set_params(int &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@set_params#&I#"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 133,
+                "name" : "get_idx_parents",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@get_idx_parents#"
+            },
+            {
+                "column" : 16,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 137,
+                "name" : "set_idx_parents(std::vector<int> &)",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@set_idx_parents#&$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+                "kind" : 7,
+                "line" : 141,
+                "name" : "get_id",
+                "parent_name" : "VonMises",
+                "usr" : "c:@C@VonMises@F@get_id#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/VonMises.cpp",
+        "file_last_write" : 1535643309
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 15,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/c_hybrid_SEM.cpp",
+                "kind" : 6,
+                "line" : 39,
+                "name" : "MatrixXd2NumericMatrix(int)",
+                "parent_name" : "",
+                "usr" : "c:@F@MatrixXd2NumericMatrix#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/c_hybrid_SEM.cpp",
+                "kind" : 6,
+                "line" : 54,
+                "name" : "c_hybrid_SEM(Rcpp::NumericMatrix, Rcpp::NumericVector, int, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@c_hybrid_SEM#$@N@Rcpp@C@Matrix>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#$@N@Rcpp@C@Vector>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#I#I#b#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/c_hybrid_SEM.cpp",
+        "file_last_write" : 1537886240
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 61,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 12,
+                "name" : "Kernel",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@Kernel"
+            },
+            {
+                "column" : 70,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 13,
+                "name" : "Triangle_mesh",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@Triangle_mesh"
+            },
+            {
+                "column" : 72,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 14,
+                "name" : "Traits",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@Traits"
+            },
+            {
+                "column" : 50,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 15,
+                "name" : "Surface_mesh_shortest_path",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@Surface_mesh_shortest_path"
+            },
+            {
+                "column" : 44,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 16,
+                "name" : "Graph_traits",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@Graph_traits"
+            },
+            {
+                "column" : 39,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 17,
+                "name" : "vertex_iterator",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@vertex_iterator"
+            },
+            {
+                "column" : 37,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 8,
+                "line" : 18,
+                "name" : "face_iterator",
+                "parent_name" : "",
+                "usr" : "c:geodesic_distance.cpp@T@face_iterator"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+                "kind" : 6,
+                "line" : 22,
+                "name" : "geodesic_distance(std::string, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@geodesic_distance#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/geodesic_distance.cpp",
+        "file_last_write" : 1530111272
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/EM.hpp",
+                "kind" : 6,
+                "line" : 52,
+                "name" : "expectation_step(Graph &, int &, int &, int &, int &, double &)",
+                "parent_name" : "",
+                "usr" : "c:@F@expectation_step#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#&d#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/EM.hpp",
+                "kind" : 6,
+                "line" : 75,
+                "name" : "maximization_step(Graph &, int &, int &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@maximization_step#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/EM.hpp",
+        "file_last_write" : 1530717701
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/ProjectedNormal.hpp",
+        "file_last_write" : 1523698326
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/Distribution.hpp",
+                "kind" : 2,
+                "line" : 25,
+                "name" : "Distribution",
+                "parent_name" : "",
+                "usr" : "c:@C@Distribution"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/Distribution.hpp",
+        "file_last_write" : 1528363017
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/Gaussian.hpp",
+                "kind" : 2,
+                "line" : 19,
+                "name" : "Gaussian",
+                "parent_name" : "",
+                "usr" : "c:@C@Gaussian"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/Gaussian.hpp",
+        "file_last_write" : 1528363204
+    },
+    {
+        "definitions" : [
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/GaussianMardia.hpp",
+        "file_last_write" : 1523698280
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/VonMises.hpp",
+                "kind" : 2,
+                "line" : 20,
+                "name" : "VonMises",
+                "parent_name" : "",
+                "usr" : "c:@C@VonMises"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/distributions/VonMises.hpp",
+        "file_last_write" : 1528363213
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 18,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/hc_one_step.hpp",
+                "kind" : 6,
+                "line" : 15,
+                "name" : "hc_one_step(Graph &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@hc_one_step#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/hc_one_step.hpp",
+        "file_last_write" : 1528124375
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/learn_structure.hpp",
+                "kind" : 6,
+                "line" : 24,
+                "name" : "learn_structure(Graph &, int &, int &, int &, int &, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@learn_structure#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#I#b#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/learn_structure.hpp",
+        "file_last_write" : 1537887683
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 28,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/structure_initialization.hpp",
+                "kind" : 6,
+                "line" : 25,
+                "name" : "node_initialization(int &, int &, int &, int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@node_initialization#&I#S0_#S0_#I#I#"
+            },
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/structure_initialization.hpp",
+                "kind" : 6,
+                "line" : 45,
+                "name" : "structure_initialization(int &, std::vector<Distribution *> &)",
+                "parent_name" : "",
+                "usr" : "c:@F@structure_initialization#&I#&$@N@std@N@__1@C@vector>#*$@C@Distribution#$@N@std@N@__1@C@allocator>#S3_#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/structure_initialization.hpp",
+        "file_last_write" : 1530260289
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/update_cache.hpp",
+                "kind" : 6,
+                "line" : 8,
+                "name" : "update_cache(Graph &, int &, int &, int &, int &, int &, std::vector<int>, int &, int, bool)",
+                "parent_name" : "",
+                "usr" : "c:@F@update_cache#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#S8_#$@N@std@N@__1@C@vector>#I#$@N@std@N@__1@C@allocator>#I#S8_#I#b#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/learn_structure/update_cache.hpp",
+        "file_last_write" : 1537887399
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 2,
+                "line" : 19,
+                "name" : "CSVIterator",
+                "parent_name" : "",
+                "usr" : "c:@C@CSVIterator"
+            },
+            {
+                "column" : 45,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 8,
+                "line" : 22,
+                "name" : "iterator_category",
+                "parent_name" : "",
+                "usr" : "c:CSVIterator.hpp@C@CSVIterator@T@iterator_category"
+            },
+            {
+                "column" : 45,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 8,
+                "line" : 23,
+                "name" : "value_type",
+                "parent_name" : "",
+                "usr" : "c:CSVIterator.hpp@C@CSVIterator@T@value_type"
+            },
+            {
+                "column" : 45,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 8,
+                "line" : 24,
+                "name" : "difference_type",
+                "parent_name" : "",
+                "usr" : "c:CSVIterator.hpp@C@CSVIterator@T@difference_type"
+            },
+            {
+                "column" : 45,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 8,
+                "line" : 25,
+                "name" : "pointer",
+                "parent_name" : "",
+                "usr" : "c:CSVIterator.hpp@C@CSVIterator@T@pointer"
+            },
+            {
+                "column" : 45,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 8,
+                "line" : 26,
+                "name" : "reference",
+                "parent_name" : "",
+                "usr" : "c:CSVIterator.hpp@C@CSVIterator@T@reference"
+            },
+            {
+                "column" : 22,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 7,
+                "line" : 32,
+                "name" : "operator++",
+                "parent_name" : "CSVIterator",
+                "usr" : "c:@C@CSVIterator@F@operator++#"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 7,
+                "line" : 34,
+                "name" : "operator++(int)",
+                "parent_name" : "CSVIterator",
+                "usr" : "c:@C@CSVIterator@F@operator++#I#"
+            },
+            {
+                "column" : 23,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 7,
+                "line" : 35,
+                "name" : "operator*",
+                "parent_name" : "CSVIterator",
+                "usr" : "c:@C@CSVIterator@F@operator*#1"
+            },
+            {
+                "column" : 23,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 7,
+                "line" : 36,
+                "name" : "operator->",
+                "parent_name" : "CSVIterator",
+                "usr" : "c:@C@CSVIterator@F@operator->#1"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 7,
+                "line" : 38,
+                "name" : "operator==(const CSVIterator &)",
+                "parent_name" : "CSVIterator",
+                "usr" : "c:@C@CSVIterator@F@operator==#&1$@C@CSVIterator#"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+                "kind" : 7,
+                "line" : 39,
+                "name" : "operator!=(const CSVIterator &)",
+                "parent_name" : "CSVIterator",
+                "usr" : "c:@C@CSVIterator@F@operator!=#&1$@C@CSVIterator#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVIterator.hpp",
+        "file_last_write" : 1523698288
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVRow.hpp",
+                "kind" : 2,
+                "line" : 23,
+                "name" : "CSVRow",
+                "parent_name" : "",
+                "usr" : "c:@C@CSVRow"
+            },
+            {
+                "column" : 28,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVRow.hpp",
+                "kind" : 7,
+                "line" : 26,
+                "name" : "operator[](std::size_t)",
+                "parent_name" : "CSVRow",
+                "usr" : "c:@C@CSVRow@F@operator[]#l#1"
+            },
+            {
+                "column" : 21,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVRow.hpp",
+                "kind" : 7,
+                "line" : 30,
+                "name" : "size",
+                "parent_name" : "CSVRow",
+                "usr" : "c:@C@CSVRow@F@size#1"
+            },
+            {
+                "column" : 14,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVRow.hpp",
+                "kind" : 7,
+                "line" : 34,
+                "name" : "readNextRow(std::istream &)",
+                "parent_name" : "CSVRow",
+                "usr" : "c:@C@CSVRow@F@readNextRow#&$@N@std@N@__1@C@basic_istream>#C#$@N@std@N@__1@S@char_traits>#C#"
+            },
+            {
+                "column" : 15,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVRow.hpp",
+                "kind" : 6,
+                "line" : 58,
+                "name" : "operator>>(std::istream &, CSVRow &)",
+                "parent_name" : "",
+                "usr" : "c:@F@operator>>#&$@N@std@N@__1@C@basic_istream>#C#$@N@std@N@__1@S@char_traits>#C#&$@C@CSVRow#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/CSVRow.hpp",
+        "file_last_write" : 1523698292
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 25,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/ReadMatrix.hpp",
+                "kind" : 8,
+                "line" : 21,
+                "name" : "Mat",
+                "parent_name" : "",
+                "usr" : "c:ReadMatrix.hpp@T@Mat"
+            },
+            {
+                "column" : 5,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/ReadMatrix.hpp",
+                "kind" : 6,
+                "line" : 23,
+                "name" : "read_csv_matrix(std::string)",
+                "parent_name" : "",
+                "usr" : "c:@F@read_csv_matrix#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/ReadMatrix.hpp",
+        "file_last_write" : 1523698288
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 7,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/matrix2graph.h",
+                "kind" : 6,
+                "line" : 25,
+                "name" : "matrix2graph(Mat)",
+                "parent_name" : "",
+                "usr" : "c:@F@matrix2graph#I#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/matrix2graph.h",
+                "kind" : 6,
+                "line" : 51,
+                "name" : "graph2matrix(Graph &)",
+                "parent_name" : "",
+                "usr" : "c:@F@graph2matrix#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/readCSV/matrix2graph.h",
+        "file_last_write" : 1528722035
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 25,
+                "name" : "compute_node_loglik(Graph &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_node_loglik#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 36,
+                "name" : "compute_loglik_observed_data(Graph &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_loglik_observed_data#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 97,
+                "name" : "compute_BIC_observed_data(Graph &, int &, int &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_BIC_observed_data#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 132,
+                "name" : "compute_node_BIC(Graph &, int &, int &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_node_BIC#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 146,
+                "name" : "compute_priori_loglik(int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_priori_loglik#&I#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 153,
+                "name" : "compute_priori_BIC(int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_priori_BIC#&I#S0_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+                "kind" : 6,
+                "line" : 158,
+                "name" : "compute_BN_BIC(Graph &, int &, int &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@compute_BN_BIC#&$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#&I#S8_#S8_#S8_#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/scores.hpp",
+        "file_last_write" : 1536154796
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 19,
+                "name" : "print_edges(Graph)",
+                "parent_name" : "",
+                "usr" : "c:@F@print_edges#$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S6_#S1_#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 26,
+                "name" : "A1inv(double)",
+                "parent_name" : "",
+                "usr" : "c:@F@A1inv#d#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 39,
+                "name" : "Exp(double)",
+                "parent_name" : "",
+                "usr" : "c:@F@Exp#d#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 44,
+                "name" : "logSumExp(int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@logSumExp#&I#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 51,
+                "name" : "class2multinomial(int &, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@class2multinomial#&I#I#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 65,
+                "name" : "get_linear_dataset(int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@get_linear_dataset#&I#S0_#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 87,
+                "name" : "get_node_data(Distribution *, int &, int &, int &)",
+                "parent_name" : "",
+                "usr" : "c:@F@get_node_data#*$@C@Distribution#&I#S2_#S2_#"
+            },
+            {
+                "column" : 17,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 125,
+                "name" : "get_random_categories(int, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@get_random_categories#I#I#"
+            },
+            {
+                "column" : 6,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+                "kind" : 6,
+                "line" : 133,
+                "name" : "writeToCSVfile(std::string, int)",
+                "parent_name" : "",
+                "usr" : "c:@F@writeToCSVfile#$@N@std@N@__1@C@basic_string>#C#$@N@std@N@__1@S@char_traits>#C#$@N@std@N@__1@C@allocator>#C#I#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/utilities.hpp",
+        "file_last_write" : 1528710871
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 96,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 8,
+                "line" : 25,
+                "name" : "Graph",
+                "parent_name" : "",
+                "usr" : "c:check_DAG.h@T@Graph"
+            },
+            {
+                "column" : 25,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 8,
+                "line" : 26,
+                "name" : "Mat",
+                "parent_name" : "",
+                "usr" : "c:check_DAG.h@T@Mat"
+            },
+            {
+                "column" : 64,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 8,
+                "line" : 27,
+                "name" : "Vertex",
+                "parent_name" : "",
+                "usr" : "c:check_DAG.h@T@Vertex"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 3,
+                "line" : 29,
+                "name" : "cycle_detector",
+                "parent_name" : "",
+                "usr" : "c:@S@cycle_detector"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 6,
+                "line" : 35,
+                "name" : "back_edge(Edge, Graph &)",
+                "parent_name" : "",
+                "usr" : "c:@S@cycle_detector@FT@>2#T#Tback_edge#t0.0#&t0.1#"
+            },
+            {
+                "column" : 10,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 7,
+                "line" : 38,
+                "name" : "get_cycle",
+                "parent_name" : "cycle_detector",
+                "usr" : "c:@S@cycle_detector@F@get_cycle#"
+            },
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+                "kind" : 6,
+                "line" : 45,
+                "name" : "check_DAG(const Graph &)",
+                "parent_name" : "",
+                "usr" : "c:@F@check_DAG#&1$@N@boost@C@adjacency_list>#$@N@boost@S@listS#$@N@boost@S@vecS#$@N@boost@S@bidirectionalS#*$@C@Distribution#$@N@boost@S@no_property#S7_#S2_#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/include/validation/check_DAG.h",
+        "file_last_write" : 1523698294
+    },
+    {
+        "definitions" : [
+            {
+                "column" : 8,
+                "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/volume.cpp",
+                "kind" : 6,
+                "line" : 6,
+                "name" : "poly_volume(NumericMatrix)",
+                "parent_name" : "",
+                "usr" : "c:@F@poly_volume#$@N@Rcpp@C@Matrix>#VI14#@N@Rcpp@CT>1#T@PreserveStorage#"
+            }
+        ],
+        "file" : "/home/universidad/RStudio Projects/SomaSimulation/src/volume.cpp",
+        "file_last_write" : 1530088870
+    }
+]

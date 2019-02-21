@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1538570109814.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2050754093",
+    "id" : "162B52E2",
+    "lastKnownWriteTime" : 1541425819,
+    "last_content_update" : 1541425819788,
+    "path" : "~/RStudio Projects/SomaSimulation/R/generar_imagenes_reeb_graph.R",
+    "project_path" : "R/generar_imagenes_reeb_graph.R",
+    "properties" : {
+        "cursorPosition" : "211,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

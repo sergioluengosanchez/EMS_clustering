@@ -1,0 +1,3 @@
+PKG_LIBS= -lmpfr -lgmpxx -lgmp /usr/lib/x86_64-linux-gnu/libCGAL.so.13.0.1 /usr/lib/x86_64-linux-gnu/libCGAL.so.13.0.1
+PKG_CPPFLAGS= -I /usr/include/eigen3
+PKG_CXXFLAGS=-std=c++14

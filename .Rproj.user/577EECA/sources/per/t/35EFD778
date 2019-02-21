@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540222108444.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4173600657",
+    "id" : "35EFD778",
+    "lastKnownWriteTime" : 1529939751,
+    "last_content_update" : 1529939751,
+    "path" : "~/RStudio Projects/SomaSimulation/R/geometricOperators.R",
+    "project_path" : "R/geometricOperators.R",
+    "properties" : {
+        "cursorPosition" : "68,15",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

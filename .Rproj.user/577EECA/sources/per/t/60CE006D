@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1530199240535.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2387678719",
+    "id" : "60CE006D",
+    "lastKnownWriteTime" : 1539611800,
+    "last_content_update" : 1539611800082,
+    "path" : "~/RStudio Projects/SomaSimulation/R/clusteringSomas.R",
+    "project_path" : "R/clusteringSomas.R",
+    "properties" : {
+        "cursorPosition" : "0,1",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
