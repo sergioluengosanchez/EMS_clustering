@@ -6,11 +6,13 @@ Neural somas perform most of the metabolic activities in the neuron and support 
 This software has been developed as a R > 3.0.0 package. To speed-up the Structural Expectation-Maximisation algorithm, the package uses some of the C++ 14 standard features, so it needs a compiler with C++ 14 support. Consequently, it is needed an R environment and internet connectivity to download additional package dependencies. R software can be downloaded from <https://cran.r-project.org/>. 
 
 The C++ compiler we have used is
+
 |Compiler|Version|Tested|
 |--------|-------|------|
 |     g++|     >5| 5.4.1|
 
 Also Rstudio IDE is needed to compile the source files.
+
 |IDE     |Version|Tested |
 |--------|-------|-------|
 | Rstudio|   >0.9| 1.0.136|
@@ -39,6 +41,7 @@ To install **Eigen3** follow the next steps
 The compiler search the library in the path /usr/include/eigen3. If it is installed in other path update the file src/Makevars with the new path.
 
 Some R packages are needed to perform some specific tasks releated with 3D processing, data management, or modeling. They must be installed thorugh the command `install.packages("name_of_the_package")` to use this package. The R dependencies of the package are:
+
 |Package    |Version|
 |-----------|-------|
 |foreach    |  1.4.4|
